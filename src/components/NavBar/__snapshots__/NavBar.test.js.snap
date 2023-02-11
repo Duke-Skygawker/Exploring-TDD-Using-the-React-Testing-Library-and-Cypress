@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The NavBar component should render 1`] = `
+exports[`The NavBar component should render with a title 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -10,7 +10,9 @@ Object {
       >
         <h2
           class="sc-dkzDqf itoMQX"
-        />
+        >
+          Test Application #2
+        </h2>
       </div>
     </div>
   </body>,
@@ -20,7 +22,9 @@ Object {
     >
       <h2
         class="sc-dkzDqf itoMQX"
-      />
+      >
+        Test Application #2
+      </h2>
     </div>
   </div>,
   "debug": [Function],
