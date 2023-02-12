@@ -4,10 +4,8 @@ describe("Cypress", () => {
 
     cy.get("a").first().click();
     cy.location("pathname").should("include", "hotel");
-  });
 
-  it("navigates to the form to add a review", () => {
-    cy.get("button").contains("+ Add Review").click();
+    cy.contains('[data-cy="addReview"]').click();
     cy.location("pathname").should("include", "new");
   });
 });

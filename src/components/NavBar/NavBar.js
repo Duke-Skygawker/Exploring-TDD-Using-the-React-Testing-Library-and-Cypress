@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import Button from '../Button/Button';
+import styled from "styled-components";
+import Button from "../Button/Button";
 
 const NavBarWrapper = styled.div`
   width: 100%;
@@ -29,7 +29,10 @@ function NavBar({ goBack, title, openForm = false }) {
       {goBack && <NavBarButton onClick={goBack}>{`< Go Back`}</NavBarButton>}
       <Title>{title}</Title>
       {openForm && (
-        <NavBarButton onClick={openForm}>{`+ Add Review`}</NavBarButton>
+        <NavBarButton
+          onClick={openForm}
+          data-cy="addReview"
+        >{`+ Add Review`}</NavBarButton>
       )}
     </NavBarWrapper>
   );
