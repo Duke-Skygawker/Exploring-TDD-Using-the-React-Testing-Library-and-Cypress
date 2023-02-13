@@ -19,4 +19,11 @@ describe("Cypress", () => {
     cy.get("input[name=rating]").type(4);
     cy.get("button").click();
   });
+
+  it("and verifies if the review is added", () => {
+    cy.wait(1000);
+
+    cy.get("h3").contains("Test review");
+    cy.get("div").contains("is a test review by Cypress");
+  });
 });
