@@ -1,5 +1,25 @@
 describe("Cypress", () => {
-  it("opens the app and click on a hotel", () => {
+  // WARNING, TEST ISOLATION HAS TO BE SET TO FALSE IN THE CYPRESS.CONFIG.JS FOR E2E TESTING
+  // AS IT CLEARS ALL STATES/CACHES
+  beforeEach(() => {
+    cy.intercept(
+      "GET",
+      "Packt-Publishing/React-Projects-Second-Edition/hotels",
+      { fixture: "hotels.json" }
+    );
+    cy.intercept(
+      "GET",
+      "Packt-Publishing/React-Projects-Second-Edition/hotels/*",
+      { fixture: "hotel.json" }
+    );
+    cy.intercept(
+      "GET",
+      "PacktPublishing/React-Projects-Second-Edition/hotels/*/reviews",
+      []
+    );
+  });
+
+  it("opens the app and clicks on a hotel", () => {
     cy.visit("http://localhost:3000");
 
     cy.get("a").first().click();
@@ -14,16 +34,16 @@ describe("Cypress", () => {
   it("fills in and submits the form", () => {
     cy.get("form").within(() => {
       cy.get("input[name=title]").type("Test review");
+      cy.get("input[name=description]").type("Is a test review by Cypress");
+      cy.get("input[name=rating]").type(4);
+      cy.get("button").click();
     });
-    cy.get("input[name=description]").type("Is a test review by Cypress");
-    cy.get("input[name=rating]").type(4);
-    cy.get("button").click();
   });
 
   it("and verifies if the review is added", () => {
-    cy.wait(1000);
+    cy.wait(600);
 
     cy.get("h3").contains("Test review");
-    cy.get("div").contains("is a test review by Cypress");
+    cy.get("div").contains("Is a test review by Cypress");
   });
 });
