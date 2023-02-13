@@ -5,7 +5,7 @@ describe("Cypress", () => {
     cy.get("a").first().click();
     cy.location("pathname").should("include", "hotel");
 
-    cy.contains('[data-cy="addReview"]').click();
+    cy.get("[data-cy=addReview]").click();
     cy.location("pathname").should("include", "new");
   });
 });

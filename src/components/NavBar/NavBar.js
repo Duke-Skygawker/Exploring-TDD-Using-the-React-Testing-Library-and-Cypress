@@ -26,12 +26,18 @@ const NavBarButton = styled(Button)`
 function NavBar({ goBack, title, openForm = false }) {
   return (
     <NavBarWrapper>
-      {goBack && <NavBarButton onClick={goBack}>{`< Go Back`}</NavBarButton>}
+      {goBack && (
+        <NavBarButton
+          onClick={goBack}
+          role="button"
+        >{`< Go Back`}</NavBarButton>
+      )}
       <Title>{title}</Title>
       {openForm && (
         <NavBarButton
           onClick={openForm}
           data-cy="addReview"
+          role="button"
         >{`+ Add Review`}</NavBarButton>
       )}
     </NavBarWrapper>
